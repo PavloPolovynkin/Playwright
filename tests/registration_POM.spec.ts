@@ -4,6 +4,7 @@ import HomePage from '../pom/pages/HomePage';
 import RegistrationForm from '../pom/forms/RegistrationForm';
 import GaragePage from '../pom/pages/GaragePage';
 
+
 let homePage: HomePage;
 let regForm: RegistrationForm;
 let garagePage: GaragePage;
