@@ -19,7 +19,7 @@ test.describe('Login to users and save states', () => {
         garagePage = new GaragePage(page);
 
         await homePage.navigate();
-        await homePage.penSignInForm();
+        await homePage.openSignInForm();
     }));
 
     test('Successful sign in', async ({ page }) => {

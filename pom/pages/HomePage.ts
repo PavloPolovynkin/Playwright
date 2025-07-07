@@ -13,7 +13,7 @@ export default class HomePage extends BasePage {
         await this.signUpButton.click();
     }
 
-    async penSignInForm() {
+    async openSignInForm() {
         await this.signInButton.click();
     }
 }
