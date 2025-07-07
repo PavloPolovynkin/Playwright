@@ -15,6 +15,20 @@ export default class GaragePage extends BasePage {
     private readonly allAddedCarNames: Locator = this.page.locator('//p[contains(@class,"car_name")]');
     private readonly pageHeader: Locator = this.page.locator('//h1', { hasText: 'Garage' });
 
+    private readonly fullname: Locator = this.page.locator('//p[@class="profile_name display-4"]');
+    private readonly editButton: Locator = this.page.locator('//span[@class="icon icon-edit"]')
+    private readonly removeCarButton: Locator = this.page.locator('//button[@class="btn btn-outline-danger"]')
+    private readonly confirmRemoveButton: Locator = this.page.locator('//button[@class="btn btn-danger"]')
+
+    get clickeditButton() {
+        return this.editButton;
+    }
+    get clickremoveCarButton() {
+        return this.removeCarButton;
+    }
+    get confirmRemoving() {
+        return this.confirmRemoveButton;
+    }
 
     get logCompAlertVisible() {
         return this.regCompleteAlert;
@@ -27,6 +41,15 @@ export default class GaragePage extends BasePage {
     get regCompAlertVisible() {
         return this.carAddedCompleteAlert;
     }
+
+    get getFullName() {
+        return this.fullname;
+    }
+
+    async checkProfileFullName(): Promise<void> {
+        await expect(this.getFullName).toHaveText('Stanislav Taran');
+    }
+
 
     async navigate(): Promise<void> {
         await this.page.goto('/panel/garage');
@@ -52,5 +75,15 @@ export default class GaragePage extends BasePage {
     async verifyCarDeletedByIndex(expectedName: string): Promise<void> {
         // await expect(this.pageHeader).toBeVisible();
     }
+
+    // async deleteAllCars(expectedName: string): Promise<void> {
+    //     await this.clickeditButton.first().click();
+    //     await this.clickremoveCarButton.click();
+    //     await this.confirmRemoveButton.last().click();
+    // }
+
+    
+
+
 }
 
