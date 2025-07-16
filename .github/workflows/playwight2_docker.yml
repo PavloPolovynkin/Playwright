@@ -14,8 +14,8 @@ jobs:
         context: .
         file: Dockerfile
         push: false
-        tag: your-image-tag:latest
+        tag: playwright-tests:latest
 
     - name: Run test
       run: 
-        docker run your-image-tag:latest
+        docker run playwright-tests:latest
