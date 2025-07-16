@@ -37,7 +37,7 @@ export default defineConfig({
       'username': process.env.HTTP_CREDENTIALS_USERNAME!, 
       'password': process.env.HTTP_CREDENTIALS_PASSWORD! 
     },
-    headless: false, // ← запускає браузер з вікном
+    headless: true, // ← запускає браузер з вікном
   },
 
   /* Configure projects for major browsers */
