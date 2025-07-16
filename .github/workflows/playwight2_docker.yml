@@ -5,7 +5,7 @@ on: workflow_dispatch
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -16,8 +16,13 @@ jobs:
           context: .
           file: Dockerfile
           push: false
-          load: true                 
+          load: true
           tags: playwright-tests:latest
 
       - name: Run Playwright tests
-        run: docker run playwright-tests:latest
+        run: |
+          docker run \
+            -e BASE_URL=${{ secrets.BASE_URL }} \
+            -e HTTP_CREDENTIALS_USERNAME=${{ secrets.HTTP_CREDENTIALS_USERNAME }} \
+            -e HTTP_CREDENTIALS_PASSWORD=${{ secrets.HTTP_CREDENTIALS_PASSWORD }} \
+            playwright-tests:latest
