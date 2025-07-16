@@ -1,0 +1,21 @@
+name: Playwright Tests via Docker
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: checkout code
+      uses: actions/checkout@v4
+    
+    - name: Build Docker Image
+      uses: docker/build-push=action@v4
+      with:
+        context: .
+        file: Dockerfile
+        push: false
+        tag: your-image-tag:latest
+
+    - name: Run test
+      run: 
+        docker run your-image-tag:latest
